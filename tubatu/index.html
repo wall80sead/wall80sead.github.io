@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="土巴兔首页 - 国内领先的装修互联网平台，提供海量装修案例、装修报价、装修攻略、建材选购及装修公司推荐服务。">
+    <meta name="keywords" content="土巴兔,装修,装修报价,装修公司,装修案例,建材">
+    <title>土巴兔-海量装修案例、报价与公司推荐平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff7a00;
+            --secondary-color: #ff9d4d;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --bg-light: #f9f9f9;
+            --white: #ffffff;
+            --border-color: #e0e0e0;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #e66a00;
+            border-color: #e66a00;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: #fff7f0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            margin-left: 8px;
+            color: var(--text-main);
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .login-btn {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .register-btn {
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            color: #2c3e50;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-sub);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-box {
+            background: var(--white);
+            padding: 12px;
+            border-radius: 50px;
+            display: inline-flex;
+            box-shadow: 0 4px 20px rgba(255, 122, 0, 0.15);
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 0 20px;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--bg-light);
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        /* Services */
+        .services {
+            padding: 48px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: #fff5f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .service-card span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Layout Grid for Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            padding-bottom: 48px;
+        }
+
+        /* Case Gallery */
+        .case-section {
+            background: var(--white);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .case-card {
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .case-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .case-info {
+            padding: 16px;
+        }
+
+        .case-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .case-meta {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .sidebar-widget {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .widget-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--bg-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rank-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .rank-num {
+            width: 24px;
+            height: 24px;
+            background: var(--bg-light);
+            color: var(--text-sub);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .rank-item:nth-child(1) .rank-num { background: #ff4d4f; color: #fff; }
+        .rank-item:nth-child(2) .rank-num { background: #ff7a45; color: #fff; }
+        .rank-item:nth-child(3) .rank-num { background: #ff9d4d; color: #fff; }
+
+        .rank-name {
+            font-size: 14px;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .rank-score {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        /* Guide Section */
+        .guide-section {
+            background: #fff5f0;
+            padding: 48px 0;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .guide-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: transform 0.2s;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .guide-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .guide-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .guide-card p {
+            font-size: 13px;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #bdc3c7;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .case-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 0;
+                gap: 12px;
+            }
+            .nav-links {
+                gap: 16px;
+                font-size: 14px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .case-grid {
+                grid-template-columns: 1fr;
+            }
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">土巴兔<span>装修网</span></a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">装修报价</a>
+                <a href="#">装修案例</a>
+                <a href="#">装修公司</a>
+                <a href="#">装修攻略</a>
+                <a href="#">建材市场</a>
+            </nav>
+            <div class="user-actions">
+                <a href="#" class="login-btn">登录</a>
+                <a href="#" class="btn btn-primary register-btn">免费报价</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>装修，上土巴兔</h1>
+            <p>海量装修案例、真实装修报价、正规装修公司推荐，让您的装修更省心、更省钱、更放心。</p>
+            <div class="search-box">
+                <input type="text" placeholder="输入小区名称，获取装修报价方案...">
+                <button>立即报价</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>10年+</h3>
+                    <p>平台服务经验</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4000万+</h3>
+                    <p>真实装修业主</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50万+</h3>
+                    <p>合作装修公司</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1000万+</h3>
+                    <p>装修案例库</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services container">
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <span>装修报价</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🖼️</div>
+                <span>装修案例</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <span>装修公司</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛋️</div>
+                <span>家具建材</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📝</div>
+                <span>装修攻略</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <span>设计师</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="container main-content">
+        <!-- Left Column: Cases -->
+        <section class="case-section">
+            <div class="section-title">
+                <h2>热门装修案例</h2>
+                <p>精选全网优质装修灵感，为您打造理想家</p>
+            </div>
+            <div class="case-grid">
+                <article class="case-card">
+                    <img src="https://picsum.photos/seed/room1/400/300" alt="现代简约三居室装修案例" class="case-img">
+                    <div class="case-info">
+                        <h3 class="case-title">现代简约三居室：北欧风的温馨与实用</h3>
+                        <div class="case-meta">90平米 | 现代 | 三居室 | 小区：阳光花园</div>
+                    </div>
+                </article>
+                <article class="case-card">
+                    <img src="https://picsum.photos/seed/room2/400/300" alt="北欧风两居室装修案例" class="case-img">
+                    <div class="case-info">
+                        <h3 class="case-title">北欧风两居室：清新自然的奶油色调</h3>
+                        <div class="case-meta">85平米 | 北欧 | 两居室 | 小区：幸福里</div>
+                    </div>
+                </article>
+                <article class="case-card">
+                    <img src="https://picsum.photos/seed/room3/400/300" alt="新中式四居室装修案例" class="case-img">
+                    <div class="case-info">
+                        <h3 class="case-title">新中式四居室：传统与现代的完美融合</h3>
+                        <div class="case-meta">140平米 | 新中式 | 四居室 | 小区：云顶公馆</div>
+                    </div>
+                </article>
+                <article class="case-card">
+                    <img src="https://picsum.photos/seed/room4/400/300" alt="日式原木风装修案例" class="case-img">
+                    <div class="case-info">
+                        <h3 class="case-title">日式原木风：回归自然的宁静生活</h3>
+                        <div class="case-meta">95平米 | 日式 | 两居室 | 小区：绿城花园</div>
+                    </div>
+                </article>
+                <article class="case-card">
+                    <img src="https://picsum.photos/seed/room5/400/300" alt="轻奢风格装修案例" class="case-img">
+                    <div class="case-info">
+                        <h3 class="case-title">轻奢风格：低调的奢华与质感</h3>
+                        <div class="case-meta">110平米 | 轻奢 | 三居室 | 小区：天玺湾</div>
+                    </div>
+                </article>
+                <article class="case-card">
+                    <img src="https://picsum.photos/seed/room6/400/300" alt="小户型装修案例" class="case-img">
+                    <div class="case-info">
+                        <h3 class="case-title">小户型装修：空间利用最大化技巧</h3>
+                        <div class="case-meta">60平米 | 现代混搭 | 一居室 | 小区：城市名苑</div>
+                    </div>
+                </article>
+            </div>
+            <div style="text-align: center; margin-top: 32px;">
+                <a href="#" class="btn btn-outline">查看更多案例</a>
+            </div>
+        </section>
+
+        <!-- Right Column: Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <div class="widget-title">
+                    <span>装修公司排行榜</span>
+                    <a href="#" style="font-size: 12px; color: var(--primary-color);">更多 ></a>
+                </div>
+                <div class="rank-list">
+                    <div class="rank-item">
+                        <div class="rank-num">1</div>
+                        <div class="rank-name">业之峰装饰</div>
+                        <div class="rank-score">4.9分</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-num">2</div>
+                        <div class="rank-name">东易日盛</div>
+                        <div class="rank-score">4.8分</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-num">3</div>
+                        <div class="rank-name">龙发装饰</div>
+                        <div class="rank-score">4.7分</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-num">4</div>
+                        <div class="rank-name">业之峰装饰</div>
+                        <div class="rank-score">4.9分</div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-num">5</div>
+                        <div class="rank-name">今朝装饰</div>
+                        <div class="rank-score">4.6分</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <div class="widget-title">装修报价计算器</div>
+                <p style="font-size: 13px; color: #666; margin-bottom: 12px;">输入房屋信息，免费获取装修预算表</p>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <select style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                        <option>请选择城市</option>
+                        <option>北京</option>
+                        <option>上海</option>
+                        <option>广州</option>
+                        <option>深圳</option>
+                    </select>
+                    <select style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                        <option>请选择户型</option>
+                        <option>一居室</option>
+                        <option>两居室</option>
+                        <option>三居室</option>
+                        <option>四居室</option>
+                    </select>
+                    <button class="btn btn-primary" style="width: 100%; border: none;">免费获取报价</button>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <div class="widget-title">装修百科</div>
+                <ul style="font-size: 14px;">
+                    <li style="margin-bottom: 10px;"><a href="#" style="color: #333;">装修合同避坑指南</a></li>
+                    <li style="margin-bottom: 10px;"><a href="#" style="color: #333;">水电改造注意事项</a></li>
+                    <li style="margin-bottom: 10px;"><a href="#" style="color: #333;">如何辨别装修公司资质</a></li>
+                    <li style="margin-bottom: 10px;"><a href="#" style="color: #333;">瓷砖铺贴工艺详解</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <section class="guide-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>装修全流程指南</h2>
+                <p>从设计到入住，一站式装修服务</p>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <div class="guide-icon">📐</div>
+                    <h4>量房与设计</h4>
+                    <p>专业设计师上门测量，为您提供个性化设计方案和预算报价。</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">🔨</div>
+                    <h4>施工与监理</h4>
+                    <p>标准化施工流程，第三方质检服务，确保工程质量达标。</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">🧹</div>
+                    <h4>软装搭配</h4>
+                    <p>提供家具、窗帘、灯具等软装选购建议，打造完美家。</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">🧪</div>
+                    <h4>环保检测</h4>
+                    <p>装修完成后进行空气质量检测，守护家人健康。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>土巴兔装修网</h3>
+                    <p>国内领先的装修互联网平台，致力于为用户提供透明、便捷、高品质的装修服务体验。让装修像购物一样简单。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>装修服务</h4>
+                    <ul>
+                        <li><a href="#">装修报价</a></li>
+                        <li><a href="#">装修公司</a></li>
+                        <li><a href="#">装修案例</a></li>
+                        <li><a href="#">装修攻略</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">新浪微博</a></li>
+                        <li><a href="#">抖音号</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 土巴兔装修网 版权所有 | 京ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+      </html>
